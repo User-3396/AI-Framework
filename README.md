@@ -1,16 +1,28 @@
 # AI-Framework
 
-## Instalações de pacotes/ferramentas: 
+## Instalações de pacotes/bibliotecas: 
 
-
-| `numpy` | `pandas` | `scikit-learn` (opicional) | `matplotlib` |
-| - | - | - | - |
-
-Terminal:
+> `numpy` `pandas` `scikit-learn` (opicional) `matplotlib`
 
 ```bash
 pip install numpy pandas scikit-learn matplotlib
 ```
+
+Se usar PyTorch:
+
+```bash
+pip install torch torchvision torchaudio
+```
+
+Se usar TensorFlow:
+
+```bash
+pip install tensorflow
+```
+
+---
+
+## Pipeline
 
 ## Métricas 
 
@@ -21,4 +33,3 @@ pip install numpy pandas scikit-learn matplotlib
 * `Recall` (Sensibilidade): Mede, dentre todas as instâncias que eram realmente positivas, quantas o modelo conseguiu identificar.
 
 * `F1-Score`: É uma média harmônica entre __precisão__ e __recall__, muito útil quando você tem um desequilíbrio entre as classes.
-
