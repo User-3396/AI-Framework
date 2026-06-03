@@ -82,3 +82,15 @@ print(type(a))
 * `Recall` (Sensibilidade): Mede, dentre todas as instâncias que eram realmente positivas, quantas o modelo conseguiu identificar.
 
 * `F1-Score`: É uma média harmônica entre __precisão__ e __recall__, muito útil quando você tem um desequilíbrio entre as classes.
+
+# Kaggle 
+
+> - baixar e extrair um dataset .csv
+> - carregar-lo pelo script:
+> ```pyhon
+> import pandas as pd
+> df =pd.read_csv('nome_do_arquivo.csv')
+> ```
+> 
+
+
