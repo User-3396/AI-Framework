@@ -30,3 +30,8 @@ Para bater com as datas dos dados solares, você deve usar anomalias globais est
 > - __O que contém__: Concentração de dióxido de carbono na atmosfera.
 > - __Resolução__: Mensal e anual desde 1958.
 > - __Vantagem__: Essencial como variável de controle na sua correlação. Para provar a influência solar, você precisará isolar o efeito dos gases estufa usando correlação parcial ou modelos de regressão múltipla.
+
+# Refferences
+
+- https://opendataset.info/category/climate
+- https://wmo.int/publication-series/state-of-global-climate

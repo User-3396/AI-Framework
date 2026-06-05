@@ -1,5 +1,35 @@
 # AI-Framework
 
+## Função
+
+__Detecção de Anomalias com Aprendizado Não Supervisionado__ 
+
+- __Objetivo__: Identificar eventos climáticos atípicos na Terra que aconteceram exatamente no mesmo momento de picos solares anômalos, sem precisar rotular os dados manualmente.
+- __IA Utilizada__: Autoencoders (Redes Neurais de Compressão) ou Isolation Forests.
+- __Como funciona__: A IA aprende o comportamento normal "Sol-Terra" dos últimos 100 anos. Quando ocorre uma combinação de dados que foge do padrão aprendido, o modelo acende um alerta (alto erro de reconstrução).
+- __Finalidade Prática__: Descoberta científica de novas correlações ou reações em cadeia na alta atmosfera que a ciência ainda não mapeou.
+
+```python
+from xgboost import XGBRegressor
+from sklearn.model_selection import train_test_split
+
+# Criando 'lags' (atrasos) para a IA entender o tempo
+# O clima responde ao sol meses depois
+df_correlacao['solar_lag_1_mes'] = df_correlacao['Sunspots'].shift(1)
+df_correlacao['solar_lag_6_mes'] = df_correlacao['Sunspots'].shift(6)
+df_correlacao.dropna(inplace=True)
+
+# X = Atividade solar (presente e passada) | y = Anomalia de temperatura na Terra
+X = df_correlacao[['Sunspots', 'solar_lag_1_mes', 'solar_lag_6_mes']]
+y = df_correlacao['Temperature_Anomaly']
+
+# Treinar o modelo de IA
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+modelo = XGBRegressor()
+modelo.fit(X_train, y_train)
+```
+
+
 ## Bibliotecas:
 
 ### Numpy
