@@ -1,8 +1,15 @@
+## Tipo de Problema a Tratar:
+
+`Aprendizado-não-supervisionado`
+
 ## Tecnicas: 
+
 - Random Forest, Gradient Boosting, CNN aplicadas em mapas geoespaciais
 
 ## Datasets: 
-- `Global Flood Database (NASA)` ou o `Flood Prediction Dataset (Kaggle)`
+
+- __Subject__: 
+- __Resultados__: `Global Flood Database (NASA)` ou o `Flood Prediction Dataset (Kaggle)`
 
 > ```Python
 > import pandas as pd
