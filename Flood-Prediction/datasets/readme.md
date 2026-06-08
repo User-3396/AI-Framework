@@ -1,6 +1,11 @@
+## Topics
+- `Sunspot` (Mancha Solar)
+- `CME (Coronal Mass Ejection)`
+- `Geomagnetic/Radiation Storms`
+
 ## 1. Dados de Atividade Solar (Séries Temporais)
 
-### SILSO (Sunspot Index and Long-term Solar Observations)
+- ### SILSO (Sunspot Index and Long-term Solar Observations)
 > - __O que contém__: Dados históricos de contagem de manchas solares (Sunspot Number), o indicador mais clássico de atividade solar.
 > - __Resolução__: Diária, mensal e anual.
 > - __Janela de Tempo__: Desde 1700 até o presente.
