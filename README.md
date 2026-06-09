@@ -29,60 +29,64 @@ modelo = XGBRegressor()
 modelo.fit(X_train, y_train)
 ```
 
+<img src="js-hex.svg">
 
-## Bibliotecas:
-
-### Numpy
+## Bibliotecas
+- <details>
+  <summary><kbd>Numpy</kbd></summary>
 
   - operações matemáticas vetorizadas
   - suporte para arrays multidimensionais
   - base para Pandas, Scikit-learn, TensorFlow e Pytorch
 
-```python
-import numpy as np
+  ```python
+  import numpy as np
 
-a = np.array([1, 2, 3, 4])
-print(a)
-print(type(a))
-```
+  a = np.array([1, 2, 3, 4])
+  print(a)
+  print(type(a))
+  ```
 
-```log
-[1 2 3 4]
-<class 'numpy.ndarray'>
-```
+  ```log
+  [1 2 3 4]
+  <class 'numpy.ndarray'>
+  ```
+</details> 
 
-### Pandas
+- <details>
+  <summary>Pandas</summary>
 
   `Python` `open source` `dados tabulares`
 
-  Usado para manipulação, análise e processamento de dados estruturados.
-  
-### Matplotlib
+  <p style="background-color: rgb(100,80,0)">Usado para manipulação, análise e processamento de dados estruturados.</p>
+</details> 
 
-> Usada para visualização de dados por gráficos
->
-> ```python
-> import matplotlib.pyplot as plt
-> valores =[1,2,3,4,5,6,7,8,9,10]
-> plt.plot(valores)
-> plt.show()
-> ```
+- <details>
+  <summary>Matplotlib</summary>
+  
+  Usada para visualização de dados por gráficos
+  
+  ```python
+  import matplotlib.pyplot as plt
+  valores =[1,2,3,4,5,6,7,8,9,10]
+  plt.plot(valores)
+  plt.show()
+  ```
+</details>
 
 ### EDA (Exploratory Data Analysis)
 
-> É o processo de explorar, resumir e visualizar dados para compreender sua estrutura,
-> identificar padrões, detectar anomalias e formular hipóteses
-> 
-> * Entender o dataset
-> * identificar padrões
-> * verificar correlaçõers
-> * avaliar qualidae dos dados
+ É o processo de explorar, resumir e visualizar dados para compreender sua estrutura, identificar padrões, detectar anomalias e formular hipóteses
 
+* Entender o dataset
+* identificar padrões
+* verificar correlaçõers
+* avaliar qualidae dos dados
 
 ## Instalações de pacotes/bibliotecas: 
 
-`numpy` `pandas` `scikit-learn` (opicional) `matplotlib`
-  
+![](https://img.shields.io/badge/Numpy-green) * ![](https://img.shields.io/badge/Pandas-yellow) * ![](https://img.shields.io/badge/opicional-scikit--learn-blue) * ![](https://img.shields.io/badge/matplotlib-red)
+
 > ```bash
 > pip install numpy pandas scikit-learn matplotlib
 > ```
