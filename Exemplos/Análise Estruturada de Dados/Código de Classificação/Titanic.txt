@@ -1,0 +1,85 @@
+Atributos
+
+survived: sobreviveu
+Tipo: categórico / binário
+Valores: 1 = sobreviveu, 0 = não sobreviveu
+Descrição: Indica se o passageiro sobreviveu ao naufrágio.
+Observação: Essa é a variável alvo (target).
+
+pclass: classe do passageiro
+Tipo: categórico / ordinal
+Valores: 1 = primeira classe, 2 = segunda classe, 3 = terceira classe
+Descrição: Classe da passagem do passageiro no navio.
+Observação: Passageiros da primeira classe tiveram maior taxa de sobrevivência.
+
+name: nome
+Tipo: texto
+Valores: string com nome completo
+Descrição: Nome completo do passageiro.
+Observação: Pode ser usado para feature engineering, por exemplo para extrair títulos como Mr, Mrs, Miss.
+
+sex: sexo
+Tipo: categórico
+Valores: male = masculino, female = feminino
+Descrição: Sexo do passageiro.
+Observação: Mulheres tiveram maior probabilidade de sobreviver.
+
+age: idade
+Tipo: numérico
+Valores: número real (pode conter valores ausentes)
+Descrição: Idade do passageiro em anos.
+Observação: Crianças tiveram maior chance de sobrevivência. Valores ausentes precisam ser tratados.
+
+sibsp: irmãos / cônjuge a bordo
+Tipo: numérico inteiro
+Valores: 0, 1, 2, …
+Descrição: Número de irmãos, irmãs ou cônjuge viajando com o passageiro.
+Observação: Pode ser usado para criar a feature family_size.
+
+parch: pais / filhos a bordo
+Tipo: numérico inteiro
+Valores: 0, 1, 2, …
+Descrição: Número de pais ou filhos viajando com o passageiro.
+Observação: Também usado para calcular family_size.
+
+ticket: número do ticket
+Tipo: texto
+Valores: string
+Descrição: Código da passagem do passageiro.
+Observação: Geralmente não é usado diretamente no modelo, mas pode ser usado em feature engineering.
+
+fare: tarifa
+Tipo: numérico
+Valores: número real
+Descrição: Valor pago pela passagem.
+Observação: Tarifas mais altas normalmente estão associadas a classes mais altas.
+
+cabin: cabine
+Tipo: texto
+Valores: string ou vazio
+Descrição: Identificação da cabine do passageiro.
+Observação: Muitos valores ausentes. Pode ser usado para criar uma feature indicando se possui cabine.
+
+embarked: porto de embarque
+Tipo: categórico
+Valores: C = Cherbourg, Q = Queenstown, S = Southampton
+Descrição: Local onde o passageiro embarcou.
+Observação: Pode estar relacionado à classe social e à chance de sobrevivência.
+
+boat: bote salva-vidas
+Tipo: categórico / texto
+Valores: número ou código do bote
+Descrição: Indica qual bote salva-vidas o passageiro utilizou.
+Observação: Só existe para sobreviventes. Não deve ser usado no treinamento (data leakage).
+
+body: número do corpo
+Tipo: numérico
+Valores: número ou vazio
+Descrição: Número do corpo encontrado após o acidente.
+Observação: Só existe para passageiros mortos. Não deve ser usado no modelo (data leakage).
+
+home.dest: origem / destino
+Tipo: texto
+Valores: string com cidade ou país
+Descrição: Local de origem ou destino do passageiro.
+Observação: Pode ser usado em feature engineering, mas geralmente não é usado em modelos simples.
