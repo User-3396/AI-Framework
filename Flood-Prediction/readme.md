@@ -44,3 +44,8 @@
   df = df.dropna()  # ou df.fillna(valor)
   ```
 </details>
+
+## Estudos
+
+https://www.biorxiv.org/content/biorxiv/early/2018/10/20/448449.full.pdf
+https://www.sciencedaily.com/releases/2019/03/190321083637.htm
