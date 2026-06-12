@@ -43,3 +43,23 @@ print(df.isnull().sum())
 print(df.isnull().sum().sum())
 ```
 
+### Exemplo
+
+```python
+import pandas as pd
+
+# 1. Carregar dados solares (ex: SILSO manchas solares mensais)
+df_solar = pd.read_csv('solar_spots_monthly.csv', parse_dates=['Date'])
+df_solar.set_index('Date', inplace=True)
+
+# 2. Carregar dados climáticos (ex: HadCRUT5 anomalias mensais)
+df_clima = pd.read_csv('hadcrut5_anomalies_monthly.csv', parse_dates=['Date'])
+df_clima.set_index('Date', inplace=True)
+
+# 3. Mesclar os datasets pela data correspondente (Inner Join)
+df_correlacao = pd.merge(df_solar, df_clima, left_index=True, right_index=True)
+
+# 4. Calcular a correlação de Pearson ou Spearman
+resultado_correlacao = df_correlacao.corr(method='pearson')
+print(resultado_correlacao)
+```
