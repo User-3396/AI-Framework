@@ -1,9 +1,4 @@
 ```python
-# Substitua o nome da pasta e do arquivo pelo caminho real
-df = pd.read_csv('../input/nome-do-dataset/nome-do-arquivo.csv')
-```
-
-```python
 # Exibe colunas e tipos de dados
 print(df.dtypes)
 ```
@@ -13,6 +8,9 @@ print(df.dtypes)
 df.info()
 ```
 
+### Seleção de linhas/dados:
+<details><summary>detalhes</summary>
+  
 ```python
 # Mostrar as primeiras 5 linhas
 print(df.head())
@@ -20,10 +18,32 @@ print(df.head())
 # Mostrar as ultimas 5 linhas
 print(df.tail())
 
-# Mostrar x primeiras linhas
+# Mostrar x primeiras/ultimas linhas
 print(df.head(x))
+print(df.tail(x))
 
-# ...
+# A. Filtrando o ano de 2020
+df_2020 = df[df['data'].between('2020-01-01', '2020-12-31')]
+
+# B. Filtrando direto pelo ano 2020
+df_2020 = df[df['data'].dt.year == 2020]
+
+# C. 
+resultado = df[(df["nome_da_coluna"] >= "2020-01-01") & (df["nome_da_coluna"] <= "2020-12-31")]
+
+# D. Filtrando com uma string de consulta
+resultado = df.query("'2020-01-01' <= nome_da_coluna <= '2020-12-31'")
+
+```
+
+</details>
+
+### Conversão de tipos:
+<details><summary>detalhes</summary>
+
+```python
+# de um objeto/texto para datetime:
+df['data'] = pd.to_datetime(df['data'], format='%Y-%m-%d')
 ```
 
 ```python
@@ -42,8 +62,16 @@ print(df.isnull().sum())
 # Conta todos os valores nulos do dataset inteiro
 print(df.isnull().sum().sum())
 ```
+</details>
 
-### Exemplo
+### Importação de dados csv:
+
+```python
+# Substitua o nome da pasta e do arquivo pelo caminho real
+df = pd.read_csv('../input/nome-do-dataset/nome-do-arquivo.csv')
+```
+
+### Exemplo de importação:
 
 ```python
 import pandas as pd
