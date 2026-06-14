@@ -45,6 +45,16 @@ Para bater com as datas dos dados solares, você deve usar anomalias globais est
 > - __Energia solar e UV__: [_NOAA UV Index & Ozone Data_](https://www.ngdc.noaa.gov/stp/solar) - 
 > - __Eventos extremos__: _Global Flood Database (NASA)_ - enchentes globais
 
+> - Fonte: ![__Unidade de Pesquisa Climática, Universidade de East Anglia__](https://crudata.uea.ac.uk/cru/data/soi/soi_3dp.dat): /nino/SOI - Desde 1866, 3 casa decimais. Indice pronto, SOI calculado e normalizado. 
+Diferente dos índices de temperatura da água (onde valores positivos significam El Niño), no SOI a lógica é invertida devido à pressão atmosférica:
+    - __Valores Sustentados Negativos__: Indicam episódios de El Niño. 
+    - __Valores Sustentados Positivos__: Indicam episódios de La Niña.
+
+
+> - __Oceanic Niño Index (ONI)__: É o padrão oficial da NOAA para identificar o El Niño. Ele mede a anomalia da temperatura da superfície do mar na região do Pacífico Equatorial (Niño 3.4) em médias móveis de 3 meses. Os dados históricos estão disponíveis na página de Climate Prediction Center da NOAA.
+> - __Southern Oscillation Index (SOI)__: Baseia-se nas flutuações de pressão atmosférica à superfície entre o Taiti e Darwin (Austrália). É uma série temporal excelente por possuir registros históricos muito longos, ideais para cruzar com os séculos de dados de manchas solares. Disponível no NOAA SOI Climate Data.
+
+
 
 # Refferences
 

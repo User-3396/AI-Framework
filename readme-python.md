@@ -1,9 +1,4 @@
 ```python
-# Substitua o nome da pasta e do arquivo pelo caminho real
-df = pd.read_csv('../input/nome-do-dataset/nome-do-arquivo.csv')
-```
-
-```python
 # Exibe colunas e tipos de dados
 print(df.dtypes)
 ```
@@ -13,6 +8,21 @@ print(df.dtypes)
 df.info()
 ```
 
+### Fazendo um DataFrame
+
+```python
+data = {'Name': ['Tom', 'Nick', 'Krish', 'Jack'], 'Age': [20, 21, 19, 18]}
+df = pd.DataFrame(data)
+
+# Fazendo um DataFrame de um numpy array
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+df = pd.DataFrame(data, columns=['a', 'b', 'c'])
+```
+
+### Seleção de linhas/dados:
+
+<details><summary>detalhes</summary>
+
 ```python
 # Mostrar as primeiras 5 linhas
 print(df.head())
@@ -20,10 +30,38 @@ print(df.head())
 # Mostrar as ultimas 5 linhas
 print(df.tail())
 
-# Mostrar x primeiras linhas
+# Mostrar x primeiras/ultimas linhas
 print(df.head(x))
+print(df.tail(x))
 
-# ...
+# A. Filtrando o ano de 2020
+df_2020 = df[df['data'].between('2020-01-01', '2020-12-31')]
+
+# B. Filtrando direto pelo ano 2020
+df_2020 = df[df['data'].dt.year == 2020]
+
+# C. 
+resultado = df[(df["nome_da_coluna"] >= "2020-01-01") & (df["nome_da_coluna"] <= "2020-12-31")]
+
+# D. Filtrando com uma string de consulta
+resultado = df.query("'2020-01-01' <= nome_da_coluna <= '2020-12-31'")
+
+# numero de linhas e colunas:
+print(df.shape)
+
+total_linhas = df.shape[0]   # Pega apenas o primeiro número
+total_colunas = df.shape[1]  # Pega apenas o segundo número
+
+```
+</details>
+
+### Conversão de tipos:
+
+<details><summary>detalhes</summary>
+
+```python
+# de um objeto/texto para datetime:
+df['data'] = pd.to_datetime(df['data'], format='%Y-%m-%d')
 ```
 
 ```python
@@ -31,6 +69,10 @@ colunas = ['ano', 'mes', 'dia', 'data_decimal', 'num_manchas', 'desvio_padrao', 
 
 # Lendo o arquivo adicionando os nomes das colunas e tratando o ponto e vírgula
 df = pd.read_csv('../input/seu-dataset/SN_d_tot_V2.0.csv', sep=';', names=colunas)
+```
+
+```python
+df['speed'] =df['speed'].astype(float)
 ```
 
 ```python
@@ -42,8 +84,75 @@ print(df.isnull().sum())
 # Conta todos os valores nulos do dataset inteiro
 print(df.isnull().sum().sum())
 ```
+</details>
 
-### Exemplo
+### Tratamento de nulls e NaN:
+
+<details><summary>detalhes</summary>
+
+```python
+# lista nulos
+df.isnull()
+
+# Dropping rows with missing values
+df.dropna(inplace=True)
+
+# Filling missing values with 0
+df.fillna(0, inplace=True)
+
+# Dropping rows with missing values
+df.dropna(inplace=True)
+
+# Remover do dataframe nulos
+# vetor auxiliar de booleanos, onde true se houver valor valido
+i =df['x'].notna() & dataSolar['y'].notna() # linhas com 'x' e 'y' validos
+df =df[i]
+```
+
+</details>
+
+### Importação de dados csv:
+
+```python
+# Substitua o nome da pasta e do arquivo pelo caminho real
+df = pd.read_csv('../input/nome-do-dataset/nome-do-arquivo.csv')
+```
+
+### Plotagem
+
+<details><summary>detalhes</summary>
+
+```python
+# Redimensionamento
+plt.figure(figsize=(10, 6))
+
+# Altera o fundo interno (área do gráfico)
+plt.gca().set_facecolor('#0F0F0F') 
+
+# Altera o fundo externo (área da figura completa)
+plt.gcf().patch.set_facecolor('#e0e0e0') 
+
+# print(dataSolar[['startTime', 'speed']].head(12))
+x =dataSolar['data'].head(50)
+y =dataSolar['num_manchas'].head(50)
+y2 =dataSolar['desvio_padrao'].head(50)
+# df = df.sort_values('data_grafico') # Ordenar por data
+plt.plot(x,y, label="manchas", color='green', linestyle='-', marker='o')
+plt.plot(x,y2, label="desvio padrao", color='yellow', linestyle='--', marker='o')
+# sns.scatterplot(data=data_clean, x ='speed', y ='halfAngle', hue='type', palete='viridis', s =100)
+# sns.lineplot(data=data_clean, x ='speed', y ='halfAngle', hue='type', palete='viridis', s =100)
+
+# plt.title('Comparação entre Velocidade e Ângulo de Abertura das CMEs')
+# plt.xlabel('Velocidade (km/s)')
+# plt.ylabel('Meio Ângulo (Graus)')
+# plt.grid(True, linestyle='--', alpha=0.5)
+
+plt.legend()
+plt.show()
+```
+</details>
+
+### Exemplo de importação:
 
 ```python
 import pandas as pd
