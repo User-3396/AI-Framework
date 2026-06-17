@@ -1,3 +1,11 @@
+## Comandos Pandas:
+
+<details><summary>detalhes</summary>
+
+
+
+</details>
+
 ```python
 # Exibe colunas e tipos de dados
 print(df.dtypes)
@@ -19,9 +27,31 @@ data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 df = pd.DataFrame(data, columns=['a', 'b', 'c'])
 ```
 
-### Seleção de linhas/dados:
+### Seleção/exploração de linhas/dados:
 
 <details><summary>detalhes</summary>
+
+- __df.shape__: Retorna uma tupla com a quantidade de linhas e colunas → (linhas, colunas).
+- __df.info()__: Mostra os tipos de dados de cada coluna e a quantidade de valores não-nulos.
+- __df.describe()__: Exibe um resumo estatístico das colunas numéricas (média, desvio padrão, mínimo, máximo).
+- __df.columns__: Retorna uma lista com o nome de todas as colunas.
+- __df.loc[linha, 'Coluna']__: Acessa dados específicos usando os rótulos do índice e da coluna.
+- __df.iloc[linha_idx, col_idx]__: Acessa dados usando a posição numérica (índice inteiro).
+- __df[df['Idade'] > 30]__: Filtra o DataFrame retornando apenas as linhas onde a condição é verdadeira.
+
+- __df.dropna()__: Remove linhas que possuem pelo menos um valor vazio (NaN).
+- __df.fillna(valor)__: Preenche os valores vazios com um valor específico ou cálculo (ex: df.mean()).
+- __df.drop('Coluna', axis=1)__: Deleta a coluna especificada.
+- __df.rename(columns={'Velho': 'Novo'})__: Renomeia colunas.
+- __df['Coluna'].astype(int)__: Altera o tipo de dado da coluna (ex: de string para inteiro).
+
+### Agrupamento e Estatística
+Comandos utilizados para extrair insights e agregar valores.
+
+- __df['Coluna'].value_counts()__: Conta a ocorrência de cada valor único na coluna.
+- __df['Coluna'].unique()__: Retorna os valores únicos de uma coluna.
+- __df.groupby('Coluna').mean()__: Agrupa os dados com base em uma coluna e calcula a média das outras.
+- __df.sort_values(by='Coluna', ascending=False)__: Ordena o DataFrame pelos valores de uma coluna (do maior para o menor).
 
 ```python
 # Mostrar as primeiras 5 linhas
@@ -33,6 +63,7 @@ print(df.tail())
 # Mostrar x primeiras/ultimas linhas
 print(df.head(x))
 print(df.tail(x))
+
 
 # A. Filtrando o ano de 2020
 df_2020 = df[df['data'].between('2020-01-01', '2020-12-31')]
