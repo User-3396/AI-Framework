@@ -1,7 +1,9 @@
 ## Topics
+
 - `Sunspot` (Mancha Solar)
-- `CME (Coronal Mass Ejection)`
+- `CME` (Coronal Mass Ejection)
 - `Geomagnetic/Radiation Storms`
+- `ERSST` ou `SST` ((Extended Reconstructed) Sea Surface Temperature)
 
 ## 1. Dados de Atividade Solar (Séries Temporais)
 
