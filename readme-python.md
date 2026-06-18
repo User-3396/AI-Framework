@@ -2,7 +2,16 @@
 
 <details><summary>detalhes</summary>
 
+### Fazendo um DataFrame
 
+```python
+data = {'Name': ['Tom', 'Nick', 'Krish', 'Jack'], 'Age': [20, 21, 19, 18]}
+df = pd.DataFrame(data)
+
+# Fazendo um DataFrame de um numpy array
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+df = pd.DataFrame(data, columns=['a', 'b', 'c'])
+```
 
 </details>
 
@@ -14,17 +23,6 @@ print(df.dtypes)
 ```python
 # Exibe resumo completo do DataFrame
 df.info()
-```
-
-### Fazendo um DataFrame
-
-```python
-data = {'Name': ['Tom', 'Nick', 'Krish', 'Jack'], 'Age': [20, 21, 19, 18]}
-df = pd.DataFrame(data)
-
-# Fazendo um DataFrame de um numpy array
-data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-df = pd.DataFrame(data, columns=['a', 'b', 'c'])
 ```
 
 ### Seleção/exploração de linhas/dados:
@@ -44,6 +42,14 @@ df = pd.DataFrame(data, columns=['a', 'b', 'c'])
 - __df.drop('Coluna', axis=1)__: Deleta a coluna especificada.
 - __df.rename(columns={'Velho': 'Novo'})__: Renomeia colunas.
 - __df['Coluna'].astype(int)__: Altera o tipo de dado da coluna (ex: de string para inteiro).
+
+```python
+# Ordenar
+df_ordenado = df.sort_values(by='id')
+df_ordenado = df.sort_values(by='id', ascending=False)
+
+```
+
 
 ### Agrupamento e Estatística
 Comandos utilizados para extrair insights e agregar valores.
