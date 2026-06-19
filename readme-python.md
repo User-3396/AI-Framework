@@ -154,6 +154,51 @@ df =df[i]
 # Substitua o nome da pasta e do arquivo pelo caminho real
 df = pd.read_csv('../input/nome-do-dataset/nome-do-arquivo.csv')
 ```
+### Dataframes: `pd.merge`
+
+- __Estrutura__: 
+
+```python
+resultado = pd.merge(df_esquerda, df_direita, on='coluna_chave', how='inner')
+
+# on='...' indica qual coluna será usada como chave de junção entre os dois DataFrames, sendo o nome igual em ambas as tabelas
+```
+
+<details><summary>detalhes</summary>
+
+- __Principais Parâmetros__:
+
+- `on`: Nome da coluna (ou lista de colunas) presente em ambos os DataFrames que servirá como "chave" para a união.
+- `left_on` e `right_on`: Usados quando as colunas que você deseja usar como chave possuem nomes diferentes em cada DataFrame.
+- `how`: Define a lógica de como as linhas que não dão match são tratadas. As opções são:
+  - `'inner'` (Padrão): Retorna apenas as linhas onde as chaves existem em ambos os DataFrames.
+  - `'left'`: Mantém todas as linhas do DataFrame da esquerda e adiciona as correspondentes da direita. Onde não há correspondência, insere NaN.
+  - `'right'`: Mantém todas as linhas do DataFrame da direita e adiciona as correspondentes da esquerda. Preenche com NaN onde não há match.
+  - `'outer'`: Retorna todas as linhas de ambos os DataFrames. Preenche com NaN onde os dados não se cruzam.
+
+- __Exemplo__:
+
+```python
+import pandas as pd
+
+# Tabela 1: Vendas
+df_vendas = pd.DataFrame({
+    'id_venda': [1, 2, 3],
+    'id_produto': [101, 102, 101],
+    'valor': [50, 30, 50]
+})
+
+# Tabela 2: Produtos
+df_produtos = pd.DataFrame({
+    'id_produto': [101, 102],
+    'nome': ['Caneta', 'Lápis']
+})
+
+# Cruzando as tabelas
+df_completo = pd.merge(df_vendas, df_produtos, on='id_produto', how='inner')
+print(df_completo)
+```
+</details>
 
 ### Plotagem
 
