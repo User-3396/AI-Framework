@@ -102,6 +102,7 @@ df['data'] = pd.to_datetime(df['data'], format='%Y-%m-%d')
 ```
 
 ```python
+# de dataset inteiro em Object para um Dataframe:
 colunas = ['ano', 'mes', 'dia', 'data_decimal', 'num_manchas', 'desvio_padrao', 'num_observacoes', 'status']
 
 # Lendo o arquivo adicionando os nomes das colunas e tratando o ponto e vírgula
@@ -109,7 +110,22 @@ df = pd.read_csv('../input/seu-dataset/SN_d_tot_V2.0.csv', sep=';', names=coluna
 ```
 
 ```python
+# para Float
 df['speed'] =df['speed'].astype(float)
+```
+
+```python
+# de um objeto/texto para datetime:
+df['data'] = pd.to_datetime(df['data'], format='%Y-%m-%d')
+
+# se houver tipos de valores diferentes ('1993-12-01 12:12:10', 2020-03-13 10:30:20.018) 
+df['time'] = pd.to_datetime(df['time'], format='mixed')
+
+Removendo a exigência de milissegundos:
+df['sua_coluna'] = pd.to_datetime(df['sua_coluna'], format='%Y-%m-%d %H:%M:%S')
+
+# converter para outro formato de datatime:
+
 ```
 
 ```python
