@@ -47,7 +47,6 @@ df.info()
 # Ordenar
 df_ordenado = df.sort_values(by='id')
 df_ordenado = df.sort_values(by='id', ascending=False)
-
 ```
 
 
@@ -170,7 +169,9 @@ df =df[i]
 # Substitua o nome da pasta e do arquivo pelo caminho real
 df = pd.read_csv('../input/nome-do-dataset/nome-do-arquivo.csv')
 ```
-### Dataframes: `pd.merge`
+### Dataframes: 
+
+1. `pd.merge`
 
 - __Estrutura__: 
 
@@ -212,9 +213,19 @@ df_produtos = pd.DataFrame({
 
 # Cruzando as tabelas
 df_completo = pd.merge(df_vendas, df_produtos, on='id_produto', how='inner')
-print(df_completo)
+
+# Se as colunas de união tiverem nomes diferentes:
+df_resultado = pd.merge(df1, df2, left_on='id_cliente', right_on='id_venda', how='outer')
+
 ```
 </details>
+
+2. Empilhar df embaixo do outro `pd.concat()`
+
+```python
+# Se os dois têm as mesmas colunas
+df_resultado = pd.concat([df1, df2], ignore_index=True)
+```
 
 ### Plotagem
 
