@@ -49,6 +49,10 @@ df_ordenado = df.sort_values(by='id')
 df_ordenado = df.sort_values(by='id', ascending=False)
 ```
 
+```python
+# Retorna todas as linhas (:) da segunda coluna (1)
+segunda_coluna = df.iloc[:, 1]
+```
 
 ### Agrupamento e Estatística
 Comandos utilizados para extrair insights e agregar valores.
