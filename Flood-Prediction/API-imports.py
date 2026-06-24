@@ -32,3 +32,16 @@ data = response.json()
 df_vento_solar = pd.DataFrame(data[1:], columns=data[0])
 print(df_vento_solar.head())
 
+
+# C. ---------------------------------------------------------------
+def getXRay ():
+    try: 
+        resposta =requests.get('https://services.swpc.noaa.gov/json/goes/primary/xrays-1-day.json', timeout=10)
+        resposta.raise_for_status()
+        try:
+            return resposta.json()
+        except ValueError:
+            return resposta.text
+    except requests.exceptions.RequestException as e:
+        # Captura qualquer erro de rede, timeout ou HTTP
+        return {"erro": str(e)}
