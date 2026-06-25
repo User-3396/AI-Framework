@@ -6,7 +6,7 @@
 
 ## Tecnicas: 
 
-- Random Forest, Gradient Boosting, CNN aplicadas em mapas geoespaciais
+- `Random Forest` `Gradient Boosting` `CNN aplicadas em mapas geoespaciais`
 
 ## Datasets: 
 
@@ -15,9 +15,28 @@
 - __Resultados__:
   - `Global Flood Database (NASA)`
   - `Flood Prediction Dataset (Kaggle)`
-  - [`Atmospheric and Oceanic Dynamics`](https://www.kaggle.com/datasets/muhammadzakria2001/atmospheric-and-oceanic-dynamics?select=All_Feature_Data.csv)
- 
+  - `Atmospheric and Oceanic Dynamics` [[src](https://www.kaggle.com/datasets/muhammadzakria2001/atmospheric-and-oceanic-dynamics?select=All_Feature_Data.csv)]
+  <details><summary>detalhes</summary>
+
+    ### Topics
   
+    `GMSL` (Global Mean Sea Level)
+    
+    - `Date` [1880 - 2024]
+    - `GMSL` [-192 - 83.9]
+    - `CO2 conc.` [288 - 421]
+    - `CO2 emissions` [858m - 38.5b]
+    - `Long-run NO2 concentration` [276 - 338]
+    - `Per-capita NO2 emissions in CO2 equivalents` []
+    - `Long-run CH4 concentration` []
+    - `Per-capita methane emissions in CO2 equivalents` []
+    - `Global avg temp. anomaly relative to 1961-1990` []
+    - `Sea surface temperature anomaly (relative to 1961-90 average)` []
+
+  </details>
+
+## Codding:
+
 <details>
   <summary><kbd>Python</kbd></summary>
   
