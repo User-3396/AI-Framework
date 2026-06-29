@@ -4,6 +4,10 @@
 - `CME` (Coronal Mass Ejection)
 - `Geomagnetic/Radiation Storms`
 - `ERSST` ou `SST` ((Extended Reconstructed) Sea Surface Temperature)
+- `Dst` (_Disturbance Storm Time_)
+- `Kp`
+- `Ap`
+- `AE`
 
 ## 1. Dados de Atividade Solar (Séries Temporais)
 
