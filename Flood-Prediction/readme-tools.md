@@ -258,3 +258,103 @@ df_sismico = pd.DataFrame({
     'Terremoto_Ocorreu': [0, 0, 1, 0, 0]       # Novo Target (Dados do USGS)
 })
 ```
+
+ ### Filtrando eventos por tempo, localização e magnitude diretamente via requisições HTTP, dispensando chaves de acesso ou cadastros
+
+1. Coleta do USGS e Cruzamento com SpacePy:
+
+```python
+import pandas as pd
+import numpy as np
+import requests
+import spacepy.toolbox as tb
+import spacepy.omni as omni
+
+# ==========================================
+# 1. COLETAR DADOS DE TERREMOTOS (USGS API)
+# ==========================================
+print("Buscando dados de terremotos no USGS...")
+
+# Definir parâmetros de busca (Ex: Ano de 2023 completo)
+starttime = "2023-01-01"
+endtime = "2023-12-31"
+min_magnitude = "5.0"  # Filtro para terremotos moderados a fortes
+
+# URL da API do USGS no formato GeoJSON
+usgs_url = f"https://usgs.gov{starttime}&endtime={endtime}&minmagnitude={min_magnitude}"
+
+response = requests.get(usgs_url)
+usgs_data = response.json()
+
+# Extrair informações relevantes da resposta JSON
+terremotos_lista = []
+for event in usgs_data['features']:
+    prop = event['properties']
+    geo = event['geometry']['coordinates']
+    terremotos_lista.append({
+        'horario_utc': pd.to_datetime(prop['time'], unit='ms'), # USGS usa timestamp em milissegundos
+        'magnitude': prop['mag'],
+        'local': prop['place'],
+        'longitude': geo[0],
+        'latitude': geo[1],
+        'profundidade_km': geo[2]
+    })
+
+# Criar DataFrame do USGS
+df_usgs = pd.DataFrame(terremotos_lista)
+
+# Agrupar dados sismológicos por hora para bater com a resolução do SpacePy OMNI
+# Criamos um indicador binário: 1 se houve terremoto M>=5 naquela hora, 0 se não
+df_usgs['horario_hora'] = df_usgs['horario_utc'].dt.round('h')
+df_sismico_horario = df_usgs.groupby('horario_hora').agg({
+    'magnitude': 'max',            # Maior magnitude registrada naquela hora
+    'local': 'count'               # Quantidade de terremotos naquela hora
+}).rename(columns={'local': 'contagem_terremotos'})
+
+df_sismico_horario['Alvo_Terremoto'] = 1  # Flag indicando ocorrência
+
+# ==========================================
+# 2. COLETAR DADOS SOLARES (SPACEPY)
+# ==========================================
+print("Coletando dados solares via SpacePy...")
+tb.update(omni=True)
+ticks = omni.get_omni_ticks()
+data_omni = omni.get_omni(ticks)
+
+df_solar = pd.DataFrame({
+    'Bz_IMF': data_omni['BzIMF'],
+    'V_sw': data_omni['Velocity'],
+    'N_sw': data_omni['Density']
+}, index=pd.to_datetime(data_omni['UTC']))
+
+# Filtrar o DataFrame do SpacePy para o mesmo período do USGS
+df_solar = df_solar.loc[starttime:endtime]
+df_solar = df_solar.replace([999.9, 9999.0], np.nan).ffill()
+
+# ==========================================
+# 3. REALIZAR O CRUZAMENTO (MERGE)
+# ==========================================
+# Unir os dados solares com os sismológicos usando o índice de tempo (Hora)
+df_final = df_solar.join(df_sismico_horario, how='left')
+
+# Preencher com 0 as horas onde NÃO ocorreram terremotos
+df_final['Alvo_Terremoto'] = df_final['Alvo_Terremoto'].fillna(0).astype(int)
+df_final['contagem_terremotos'] = df_final['contagem_terremotos'].fillna(0).astype(int)
+df_final['magnitude'] = df_final['magnitude'].fillna(0.0)
+
+# ==========================================
+# 4. ENGENHARIA DE FEATURES TEMPORAIS LONGAS
+# ==========================================
+# Criando atrasos (lags) de 24h e 48h para testar hipóteses de acoplamento longo
+df_final['Bz_IMF_lag_24h'] = df_final['Bz_IMF'].shift(24)
+df_final['V_sw_lag_24h'] = df_final['V_sw'].shift(24)
+df_final['Bz_IMF_lag_48h'] = df_final['Bz_IMF'].shift(48)
+
+df_final = df_final.dropna()
+
+print("\n--- DataFrame Unificado Pronto ---")
+print(df_final[['Bz_IMF', 'V_sw', 'magnitude', 'Alvo_Terremoto']].head(10))
+print(f"\nTotal de horas analisadas: {len(df_final)}")
+print(f"Horas com registros de terremotos M>=5: {df_final['Alvo_Terremoto'].sum()}")
+```
+ 
