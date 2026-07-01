@@ -1,6 +1,8 @@
 # SpacePy [1](https://spacepy.github.io/index.html)
 extension://bfdogplmndidlpjfhoijckpakkdjkkil/pdf/viewer.html?file=https%3A%2F%2Fscispace.com%2Fpdf%2Fspacepy-a-python-based-library-of-tools-for-the-space-564174mvu9.pdf 
 
+<details><summary>Detalhes</summary>
+
 ## Para que ela serve?
 
 O pacote resolve os problemas mais comuns enfrentados por cientistas espaciais, dividindo-se em ferramentas principais:
@@ -41,7 +43,13 @@ A SpacePy possui o melhor leitor Python para esse formato (`spacepy.pycdf`), per
 
 Se o seu estudo avalia se a tempestade solar conseguiu "comprimir" a defesa magnética da Terra a ponto de expor satélites de órbita geoestacionária, o módulo `spacepy.irbempy` permite calcular a posição da magnetopausa e mapear as linhas de campo magnético terrestre sob o estresse do vento solar.
 
-# spacepy.toolbox e spacepy.omni - Sol -> Índices geomagnéticos
+</details>
+
+# spacepy.toolbox e spacepy.omni 
+
+### __Sol__ -> Índices Geomagnéticos
+
+<details><summary>Detalhes</summary>
 
 ```python
 import pandas as pd
@@ -102,7 +110,7 @@ print(df_ml.head())
 - __Alvo Antecipado (y)__: O `shift(-1)` joga o dado terrestre para o "passado" da linha atual. Na prática, o modelo usará os dados de vento solar de agora para adivinhar o Kp de daqui a 1 hora.
 - __Dados Omni limpos__: O `spacepy.omni` já traz os dados interpolados e ajustados considerando o tempo de viagem do ponto L1 até o topo da atmosfera magnética da Terra (o chamado _bow shock_).
 
-## Usando __XGBoost__, __Random Forest__ ou __Regressão Logística__
+### Usando __XGBoost__, __Random Forest__ ou __Regressão Logística__
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -218,7 +226,11 @@ print(df_resultado.head(10))
 
 ```
 
-## Sol -> Terremotos
+</details>
+
+### Sol -> Terremotos
+
+<details><summary>Detalhes</summary>
 
 Cientificamente, o assunto é altamente controverso: a comunidade sismológica majoritária descarta uma relação direta causal, enquanto alguns grupos minoritários pesquisam mecanismos de acoplamento eletromagnético na crosta terrestre.
 Abaixo estão as mudanças práticas estruturais que você precisará aplicar no seu pipeline de Machine Learning:
@@ -259,7 +271,7 @@ df_sismico = pd.DataFrame({
 })
 ```
 
- ### Filtrando eventos por tempo, localização e magnitude diretamente via requisições HTTP, dispensando chaves de acesso ou cadastros
+### Filtrando eventos por tempo, localização e magnitude diretamente via requisições HTTP, dispensando chaves de acesso ou cadastros
 
 1. Coleta do USGS e Cruzamento com SpacePy:
 
@@ -357,4 +369,5 @@ print(df_final[['Bz_IMF', 'V_sw', 'magnitude', 'Alvo_Terremoto']].head(10))
 print(f"\nTotal de horas analisadas: {len(df_final)}")
 print(f"Horas com registros de terremotos M>=5: {df_final['Alvo_Terremoto'].sum()}")
 ```
- 
+
+</details>
