@@ -59,3 +59,50 @@ plt.show()
 - Se o pico for em lag negativo, significa que os fenômenos terrestres ocorrem antes dos sinais solares (menos provável).
 - Se não houver correlação significativa, pode indicar ausência de relação direta ou necessidade de considerar outros fatores intermediários (ex.: clima, tectônica).
 
+# Técnicas
+
+1. __Downsampling Estatístico (Agregação)__
+
+Em vez de usar dados a cada minuto, reduza a frequência para intervalos horários (1H) ou diários (1D). Isso diminui drasticamente o volume de dados, além de remover ruídos de alta frequência.
+
+- __Média ou Mediana__: Preservam a tendência central dos dados (ex: nível da água ou temperatura média).
+- __Mínimo e Máximo (Min/Max)__: Essenciais para capturar a amplitude de variação em dados ambientais ou hidrológicos.
+- __Técnica OHLC__: Usada no mercado financeiro, mas excelente para dados climáticos extremos. Agrupa o primeiro (Open), o maior (High), o menor (Low) e o último (Close) valor do período.
+
+2. __Criação de Features de Janelas (Rolling Windows)__
+Modelos preditivos precisam conhecer o passado. Crie janelas deslizantes para calcular estatísticas sobre o histórico recente (ex: a média dos últimos 7 dias).
+
+- __Lag Features__: Valores de t-1, t-24, etc.
+- __Rolling Features__: Média móvel, desvio padrão móvel ou variância móvel dentro da janela.
+
+```python
+import pandas as pd
+import numpy as np
+
+# Supondo que 'df' já foi carregado com dados por minuto e tem o 'datetime' como índice
+df = df.sort_index()
+
+# 1. Downsampling: Reduzindo de minuto para hora (calcula a média e o desvio padrão)
+df_hourly = df.resample('1H').agg({
+    'valor_observado': ['mean', 'std', 'max', 'min']
+})
+
+# Nivelar o MultiIndex gerado pelo agg
+df_hourly.columns = ['media', 'desvio_padrao', 'maximo', 'minimo']
+
+# 2. Feature Engineering: Janela Deslizante (Rolling Window)
+# Exemplo: Média móvel das últimas 24 horas (janela de 1 dia)
+df_hourly['media_movel_24h'] = df_hourly['media'].rolling(window=24).mean()
+
+# 3. Lag Features: Valor da variável alvo há 24 horas (passado)
+df_hourly['lag_24h'] = df_hourly['media'].shift(24)
+
+# Limpar valores nulos gerados pelas janelas e lags
+df_final = df_hourly.dropna()
+```
+
+### Boas Práticas para o Pipeline
+
+- __Evite Data Leakage__: Ao calcular janelas, calcule somente com base em dados do passado em relação à linha do tempo preditiva.
+- __Lidar com Falhas__: Dados de sensores do USGS e NOAA podem ter falhas (NaNs). Certifique-se de preencher esses buracos com interpolação linear simples antes do downsampling.
+- __Formato de Armazenamento__: Para dataframes de vários anos, exporte os dados limpos em formatos colunais otimizados e comprimidos para leitura rápida, como `.parquet` ou `.zarr`, em vez de arquivos CSV. [[1](https://waterdata.usgs.gov/blog/cloud_data/)]
