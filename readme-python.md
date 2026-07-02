@@ -140,6 +140,22 @@ print(df.isnull().sum())
 # Conta todos os valores nulos do dataset inteiro
 print(df.isnull().sum().sum())
 ```
+
+```python
+# Timestamp:
+
+from datetime import datetime
+
+# 1. Converter data comum para Timestamp (segundos)
+agora = datetime.now()
+timestamp = agora.timestamp()
+print(timestamp)  # Ex: 1782999855.0
+
+# 2. Converter de volta o número para Data/Hora legível
+data_convertida = datetime.fromtimestamp(1782999855)
+print(data_convertida)  # Retorna: 2026-07-02 16:04:15
+```
+
 </details>
 
 ### Tratamento de nulls e NaN:
