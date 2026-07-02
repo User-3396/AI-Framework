@@ -54,6 +54,13 @@ df_ordenado = df.sort_values(by='id', ascending=False)
 segunda_coluna = df.iloc[:, 1]
 ```
 
+`.assign()`
+
+```python
+# O comando .assign() foi usado apenas para atualizar a coluna temporariamente para exibição sem quebrar a linha única de código.
+print(dfEQ[dfEQ['magnitude'] >= 5.0].sort_values(by='magnitude', ascending=False)[['magnitude', 'timestamp']].assign(timestamp=lambda d: pd.to_datetime(d['timestamp'], unit='ms')).head())
+```
+
 ### Agrupamento e Estatística
 Comandos utilizados para extrair insights e agregar valores.
 
@@ -154,6 +161,10 @@ print(timestamp)  # Ex: 1782999855.0
 # 2. Converter de volta o número para Data/Hora legível
 data_convertida = datetime.fromtimestamp(1782999855)
 print(data_convertida)  # Retorna: 2026-07-02 16:04:15
+
+# Erro com timestamp de milissegundos:
+# avisar explicitamente ao pandas que a unidade do seu dado original está em milissegundos (unit='ms') [stem-calculative-problem-solving]
+pd.to_datetime(d['timestamp'], unit='ms')
 ```
 
 </details>
