@@ -1,6 +1,24 @@
 # Clima Espacial (Sol-Terra)
 
-[1](https://www.ncei.noaa.gov/products/geomagnetic-indices) [1.trad](https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Ftranslate.google.com%2Ftranslate%3Fu%3Dhttps%3A%2F%2Fwww.ncei.noaa.gov%2Fproducts%2Fgeomagnetic-indices%26hl%3Dpt%26sl%3Den%26tl%3Dpt%26client%3Dsge&ved=0CAEQ1fkOahgKEwiwn4bGnreVAxUAAAAAHQAAAAAQhwE&opi=89978449)
+### Variables Originadas no Sol (Condições Solar e Interplanetária)
+Estas variáveis descrevem a matéria e a energia que o Sol ejetou e que estão cruzando o espaço em direção ao nosso planeta. Elas são coletadas por satélites no ponto Lagrangiano L1 (a cerca de 1,5 milhão de km da Terra).
+
+- __Velocidade do Vento Solar (Solar Wind Speed)__: Mede a rapidez com que o plasma viaja. O vento normal sopra entre 300 e 500 km/s. Quando uma ejeção de massa coronal (CME) ou um buraco coronal atinge o sensor, essa velocidade pode passar de 800 km/s, empurrando o campo magnético da Terra com força.
+- __Densidade de Prótons (Proton Density)__: Mede a quantidade de partículas (plasma) por centímetro cúbico. Um número alto (acima de 20-30 p/cm³) significa que o vento solar está "denso" e pesado, aumentando a pressão do impacto na nossa magnetosfera.
+- __Temperatura do Vento Solar (Temperature)__: Mede a energia térmica cinética das partículas gasosas do vento solar. Flutuações drásticas indicam frentes de choque de tempestades solares.
+- __Campo Magnético Interplanetário / Vetor $B_z$ (_IMF /_ $B_z$ _Component_)__: O vento solar carrega o magnetismo do Sol pelo espaço. O vetor $B_z$ aponta a direção norte ou sul desse campo. Se o $B_z$ estiver negativo (apontando para o Sul), ele se conecta perfeitamente ao campo magnético da Terra (que aponta para o Norte), abrindo as portas para a entrada de energia solar e gerando as tempestades geomagnéticas.
+- __Fluxo de Prótons Solares (Solar Proton Flux / SEPs)__: Mede prótons de altíssima energia acelerados por explosões solares. Quando esse fluxo atinge níveis críticos, causa tempestades de radiação solar (Escala S da NOAA), ameaçando astronautas e satélites.
+
+### Variáveis Medidas e Sentidas na Terra
+
+Estas variáveis descrevem a reação do ambiente terrestre ao bombardeio do vento solar. Elas monitoram a magnetosfera, a ionosfera e as correntes elétricas no solo.
+
+- __F10.7 Index (Fluxo de Rádio de 10,7 cm)__: Embora seja uma emissão do Sol, ele é medido por antenas na Terra e serve para estimar o nível de ionização da nossa alta atmosfera. Quanto maior o F10.7, mais densa fica a ionosfera terrestre, alterando a órbita de satélites baixos devido ao arrasto atmosférico.
+- __Índice Dst (Disturbance Storm Time)__: Mede a intensidade da corrente elétrica de anel que circula ao redor da Terra no espaço. Valores normais ficam perto de zero. Valores muito negativos (ex: -100 nT a -400 nT) indicam que a Terra está passando por uma severa tempestade geomagnética global.
+- __Índice AE (Auroral Electrojet)__: Mede a atividade elétrica especificamente nas regiões dos polos (zonas aurorais). Ele indica a intensidade das correntes que geram as auroras boreais e austrais.
+- __TEC (Total Electron Content)__: Mede a quantidade total de elétrons livres na ionosfera da Terra. Variações bruscas no TEC distorcem diretamente os sinais que cruzam a atmosfera, gerando os temidos erros de precisão no GPS.
+
+[fonte 1.1](https://www.ncei.noaa.gov/products/geomagnetic-indices) [fonte 1.2. trad](https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Ftranslate.google.com%2Ftranslate%3Fu%3Dhttps%3A%2F%2Fwww.ncei.noaa.gov%2Fproducts%2Fgeomagnetic-indices%26hl%3Dpt%26sl%3Den%26tl%3Dpt%26client%3Dsge&ved=0CAEQ1fkOahgKEwiwn4bGnreVAxUAAAAAHQAAAAAQhwE&opi=89978449)
 
 ### 1. Dados Geomagnéticos Afetados pelo Sol
 
