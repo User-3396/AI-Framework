@@ -3,6 +3,15 @@
 <details><summary>Detalhes</summary>
 
 ```python
+class objeto1:
+    def __init__ (self) -> None:
+        pass # Não faz nada
+
+# classes mínimas (como exceções personalizadas):
+class MeuErroCustomizado(Exception):
+    pass
+
+# 
 class Carro:
     # O método __init__ é o construtor que define os atributos do objeto
     def __init__(self, marca, modelo):
@@ -31,6 +40,13 @@ def somar(a, b):
 # Com a seta (Indicando que o retorno será um número inteiro)
 def somar_com_tipo(a: int, b: int) -> int:
     return a + b
+
+# Outros exemplos:
+
+# Exemplo 1: Retorna uma String explicitamente
+def saudar(nome: str) -> str:
+    return f"Olá, {nome}"
+
 ```
 
 __Principais Diferenças__
