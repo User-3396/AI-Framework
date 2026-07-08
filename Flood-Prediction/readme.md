@@ -16,9 +16,8 @@
   - `Global Flood Database (NASA)`
   - `Flood Prediction Dataset (Kaggle)`
   - `Atmospheric and Oceanic Dynamics` [[src](https://www.kaggle.com/datasets/muhammadzakria2001/atmospheric-and-oceanic-dynamics?select=All_Feature_Data.csv)]
-  <details><summary>detalhes</summary>
 
-    ### Topics
+  <details><summary>Topics</summary>
   
     `GMSL` (Global Mean Sea Level)
     
@@ -34,6 +33,77 @@
     - `Sea surface temperature anomaly (relative to 1961-90 average)` []
 
   </details>
+
+<details><summary>Juntando os dataframes</summary>
+
+Para fazer um gráfico de correlação entre dois DataFrames diferentes (como o de Terremotos e o de Clima Espacial/Dst), você deve primeiro unificar os dados pela data usando o método `pd.merge_asof()` do Pandas (ideal para alinhar horários que não batem exatamente). Depois, você calcula a correlação com `.corr()` e usa o Seaborn para desenhar um mapa de calor (`heatmap`).
+Aqui está o passo a passo completo e o código para gerar o gráfico:
+
+1. Passo Preparatório: Alinhar e Juntar os DataFramesAntes de cruzar os dados, as colunas de tempo de ambos os DataFrames precisam estar ordenadas e convertidas para o formato `datetime`.
+
+```python
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 1. Garantir que as colunas de tempo são datetime e estão ordenadas
+dfEQ = dfEQ.sort_values('data')
+df_dst = df_dst.sort_values('time')
+
+# 2. Mesclar os dataframes pelo horário mais próximo (Merge Asof)
+# Ele vai associar cada terremoto ao índice Dst medido naquela hora correspondente
+df_unificado = pd.merge_asof(
+    dfEQ, 
+    df_dst, 
+    left_on='data', 
+    right_on='time', 
+    direction='nearest'
+)
+```
+
+2. Gerar o Gráfico de Correlação (Matriz e Heatmap)
+
+Agora que os dados de magnitude e Dst estão na mesma linha, você filtra apenas as colunas numéricas que quer analisar e plota o gráfico:
+
+```python
+# 3. Selecionar apenas as colunas numéricas de interesse para a correlação
+# (Substitua pelos nomes exatos das suas colunas)
+colunas_analise = ['magnitude', 'dst']
+df_correlacao = df_unificado[colunas_analise].dropna()
+
+# 4. Calcular a matriz de correlação de Pearson
+matriz_corr = df_correlacao.corr()
+
+# 5. Configurar e desenhar o Gráfico (Heatmap)
+plt.figure(figsize=(6, 4))
+sns.heatmap(
+    matriz_corr, 
+    annot=True,          # Mostra o valor numérico da correlação dentro do quadrado
+    cmap='coolwarm',     # Paleta de cor (azul para negativo, vermelho para positivo)
+    fmt=".2f",           # Limita a duas casas decimais
+    vmin=-1, vmax=1      # Força a escala a ir de -1 a 1
+)
+
+plt.title('Correlação: Atividade Sísmica vs Índice Dst')
+plt.tight_layout()
+plt.show()
+```
+
+3. Alternativa: Gráfico de Dispersão (Scatter Plot) com Linha de Tendência
+
+Se você quiser visualizar a distribuição ponto a ponto para ver se há um padrão visual claro entre o Dst e a magnitude:
+
+```python
+plt.figure(figsize=(8, 5))
+sns.regplot(data=df_correlacao, x='dst', y='magnitude', scatter_kws={'alpha':0.5}, line_kws={'color':'red'})
+plt.title('Dispersão: Índice Dst vs Magnitude do Terremoto')
+plt.xlabel('Índice Dst (nT)')
+plt.ylabel('Magnitude (Richter)')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+</details>
 
 ## Codding:
 
