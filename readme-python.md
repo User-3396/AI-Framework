@@ -1,8 +1,53 @@
-## Comandos Pandas:
+### Fazendo um objeto:
 
-<details><summary>detalhes</summary>
+<details><summary>Detalhes</summary>
+
+```python
+class Carro:
+    # O método __init__ é o construtor que define os atributos do objeto
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+        
+    def buzinar(self):
+        print(f"O {self.modelo} está buzinando: BEEP BEEP!")
+
+# Criando (instanciando) um objeto da classe Carro
+meu_carro = Carro("Toyota", "Corolla")
+
+# Acessando atributos e métodos do objeto
+print(meu_carro.marca)  # Saída: Toyota
+meu_carro.buzinar()     # Saída: O Corolla está buzinando: BEEP BEEP!
+```
+
+Em Python, a seta `->` é utilizada para fazer __Type Hinting__ (indicação de tipo) e serve para __especificar o tipo de dado que uma função vai retornar__.
+Ela não muda o comportamento do código na execução, funcionando apenas como uma documentação visual e um aviso para o editor de código.
+
+```python
+# Sem a seta (Python clássico)
+def somar(a, b):
+    return a + b
+
+# Com a seta (Indicando que o retorno será um número inteiro)
+def somar_com_tipo(a: int, b: int) -> int:
+    return a + b
+```
+
+__Principais Diferenças__
+
+- __Com a seta (`->`)__: O editor de código (como VS Code ou PyCharm) avisa se você tentar retornar um tipo errado. O código fica mais fácil de ler e ganha preenchimento automático inteligente (autocompletar).
+- __Sem a seta__: O Python aceita qualquer tipo de retorno e o programador precisa adivinhar o que a função devolve olhando o código interno dela.
+
+__Casos Especiais__
+
+- Se a função não retorna nada, use `-> None`.
+- Se retornar uma lista de textos, use `-> list[str]`.
+
+</details>
 
 ### Fazendo um DataFrame
+
+<details><summary>detalhes</summary>
 
 ```python
 data = {'Name': ['Tom', 'Nick', 'Krish', 'Jack'], 'Age': [20, 21, 19, 18]}
@@ -13,8 +58,6 @@ data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 df = pd.DataFrame(data, columns=['a', 'b', 'c'])
 ```
 
-</details>
-
 ```python
 # Exibe colunas e tipos de dados
 print(df.dtypes)
@@ -24,6 +67,8 @@ print(df.dtypes)
 # Exibe resumo completo do DataFrame
 df.info()
 ```
+
+</details>
 
 ### Seleção/exploração de linhas/dados:
 
