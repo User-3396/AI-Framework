@@ -110,12 +110,21 @@ df_ordenado = df.sort_values(by='id')
 df_ordenado = df.sort_values(by='id', ascending=False)
 ```
 
+`.iloc[]`:
+
 ```python
 # Retorna todas as linhas (:) da segunda coluna (1)
 segunda_coluna = df.iloc[:, 1]
+
+# filtro por data
+# [se a data for datetime e estiver indexada no dataframe]
+print(df.iloc['2020' : '2026'])
+
+# filtra e mostra uma coluna:
+print(df.iloc['2020' : '2026', 'data'])
 ```
 
-`.assign()`
+`.assign()`:
 
 ```python
 # O comando .assign() foi usado apenas para atualizar a coluna temporariamente para exibição sem quebrar a linha única de código.
