@@ -23,3 +23,12 @@ Famoso por abrigar o maior lago de lava fluido da Terra. Ele é considerado um d
 __6. Sakurajima (Kyushu, Japão)__ 
 
 Outro gigante situado no Anel de Fogo, o Sakurajima registra pequenas erupções quase diárias, gerando plumas de fumaça e cinzas constantes na região.
+
+### Atividades no maximo solar (do Ciclo Solar 25, de 2024 a 2026)
+
+- __Kīlauea (EUA)__: Entrou em uma fase eruptiva histórica e frenética iniciada em dezembro de 2024. Até meados de 2026, bateu recordes com dezenas de episódios consecutivos de fontes e rios de lava na cratera Halemaʻumaʻu.
+- __Etna (Itália)__: Manteve seu comportamento altamente dinâmico ao longo de 2024, 2025 e 2026, expelindo colunas de cinzas e fluxos de lava visíveis a quilômetros de distância.
+- __Merapi e Semeru (Indonésia)__: A Indonésia registrou intensa atividade. O Semeru permaneceu em erupção contínua e explosiva durante todo o período de 2024 a 2026, enquanto o Merapi seguiu gerando fluxos piroclásticos perigosos.
+- __Vulcões da Islândia (Península de Reykjanes)__: Protagonizaram uma das séries de erupções mais famosas desse período. Desde o fim de 2023, cruzando todo o ano de 2024 e 2025, o sistema islandês abriu fissuras colossais, expelindo milhões de metros cúbicos de magma e modificando a geografia local.
+- __Villarrica (Chile)__: Registrou recorrentes alertas e atividade interna instável com emissão de gases e incandescência noturna na Cordilheira dos Andes.
+- __Sangay (Equador) e Manam (Papua Nova Guiné)__: Mantiveram erupções ininterruptas de caráter altamente explosivo e efusivo entre 2024 e 2026.
