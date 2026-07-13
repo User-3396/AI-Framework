@@ -351,6 +351,20 @@ plt.plot(x,y2, label="desvio padrao", color='yellow', linestyle='--', marker='o'
 plt.legend()
 plt.show()
 ```
+
+__Janela deslizante:__
+
+```python
+# 3. Aplica a janela móvel (ex: 24 meses para ciclos longos)
+janela_global = 24
+vrp_global_suavizado = vrp_global_mensal.rolling(window=janela_global, center=True).mean()
+```
+
+1. `vrp_mensal`: É o seu DataFrame original contendo os valores organizados mês a mês.
+2. `.rolling(window=janela_meses, ...)`: Cria uma janela deslizante (móvel). Se `janela_meses = 12`, significa que o Pandas vai agrupar os dados em blocos de 12 em 12 meses. Conforme o código avança no tempo, essa janela "desliza" um mês para a frente, descartando o mês mais antigo e incluindo o mais novo.
+3. `center=True`: Define a posição do resultado dentro da janela. Por padrão (`False`), o Pandas atribui o resultado calculado ao último dia da janela (olhando para trás). Com center=True, ele atribui o resultado exatamente ao centro da janela. Para uma janela de 12 meses, o valor plotado no mês de Julho refletirá a realidade dos 6 meses anteriores e dos 6 meses posteriores. Isso evita que o seu gráfico fique "deslocado" ou atrasado visualmente para a direita.
+4. `.mean()`: É a operação matemática aplicada aos valores de dentro da janela. Neste caso, ele soma os 12 meses da janela atual e divide por 12, gerando a média móvel.
+
 </details>
 
 ### Exemplo de importação:
