@@ -96,3 +96,9 @@ df_bz['bz'] = pd.to_numeric(df_bz['bz'])
 df_bz.plot(x='time_tag', y='bz', title="Análise Temporal de Bz (Campo Magnético Solar)")
 ```
 
+## Escalas: 
+
+- __Escala R__ (Radio Blackouts ou Apagões de Rádio): Enquanto os canais XRSA e XRSB medem a energia que sai do Sol, a Escala R traduz o impacto físico real gerado na ionosfera da Terra.
+- __Escala S (Solar Radiation Storms)__: Mede o impacto de prótons energéticos que atingem os polos magnéticos da Terra. Avalia o risco de radiação para astronautas, passageiros de aviões em altas altitudes e falhas eletrônicas em satélites.
+- __Escala G (Geomagnetic Storms)__: Mede o impacto das Ejeções de Massa Coronal (CME) na Magnetosfera da Terra. É calculada usando o Índice Kp (que vai de 0 a 9). Mostra a força de tempestades geomagnéticas capazes de induzir correntes elétricas em redes de energia (causando apagões na Terra) e criar auroras polares.
+
