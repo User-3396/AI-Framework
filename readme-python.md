@@ -396,3 +396,17 @@ df_correlacao = pd.merge(df_solar, df_clima, left_index=True, right_index=True)
 resultado_correlacao = df_correlacao.corr(method='pearson')
 print(resultado_correlacao)
 ```
+
+## Agrupamento
+
+### 1. Agrupamento Inteligente (`.agg`)
+
+O método `.groupby(df.index.date)` une todas as linhas que pertencem ao mesmo dia. Com a função `.agg()`, criamos duas colunas novas ao mesmo tempo: `max` extrai o terremoto mais forte e `count` conta quantos registros ocorreram.
+
+### 2. O Segredo dos Dois Eixos (`ax1.twinx()`)
+
+Como uma magnitude varia geralmente de 0 a 9 e a quantidade de terremotos pode ser na casa das dezenas ou centenas, plotar ambos no mesmo eixo esmagaria um dos gráficos. O método `twinx()` cria um espelho do eixo X, permitindo que a quantidade fique do lado direito com sua própria escala.
+
+### 3. Combinação de Linha e Barra
+
+Utilizar uma linha para a magnitude mais alta e __barras semitransparentes__ (`alpha=0.3`) para a quantidade evita que um gráfico cubra o outro, facilitando a identificação visual de dias em que houve muitos terremotos pequenos ou poucos terremotos grandes.
